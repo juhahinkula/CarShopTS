@@ -5,11 +5,10 @@ import { AllCommunityModule, ModuleRegistry } from 'ag-grid-community';
 import Button from '@mui/material/Button';
 import Snackbar from '@mui/material/Snackbar';
 import Stack from '@mui/material/Stack';
-//import AddCar from './AddCar';
-// import EditCar from './EditCar';
+import AddCar from './AddCar';
+import EditCar from './EditCar';
 import { fetchCars, deleteCar } from './carapi';
 import { Car } from './types';
-import AddCar from './AddCar';
 
 function Carlist() {
   ModuleRegistry.registerModules([AllCommunityModule]);
@@ -43,10 +42,10 @@ function Carlist() {
     { field: 'fuel', sortable: true, filter: true, width: 100 },
     { field: 'modelYear', sortable: true, filter: true, width: 100 },
     { field: 'price', sortable: true, filter: true, width: 120 },
- /*   {
-      cellRenderer: params => <EditCar cardata={params.data} fetchCars={getCars} />,
+    {
+      cellRenderer: (params: ICellRendererParams) => <EditCar car={params.data} fetchCars={getCars} />,
       width: 120
-    }, */
+    },
     {
       cellRenderer: (params: ICellRendererParams)  => 
         <Button color="error" size="small" onClick={() => handleDelete(params.data._links.car.href)}>
