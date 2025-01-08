@@ -41,6 +41,6 @@ export type CarDialogProps = {
 }
 
 export type CarEditProps = {
-  car: Car;
+  car: CarResponse;
   fetchCars: () => void;
 }

@@ -35,9 +35,7 @@ export default function EditCar(props: CarEditProps) {
   };
 
   const handleSave = () => {
-    const href = props.car._links?.car.href || '';
-
-    updateCar(car, href)
+    updateCar(car, props.car._links.car.href)
     .then(() => props.fetchCars())
     
     handleClose();
