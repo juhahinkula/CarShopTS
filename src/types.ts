@@ -1,4 +1,21 @@
-export interface Car {
+export type ResponseData = {
+  _embedded: {
+    cars: Car[];
+  }
+  _links: {
+    self: {
+      href: string;
+    };
+    profile: {
+      href: string;
+    };
+    search: {
+      href: string;
+    };
+  }
+}
+
+export type Car = {
   brand: string;
   model: string;
   color: string;
@@ -15,12 +32,12 @@ export interface Car {
   };
 }
 
-export interface CarDialogProps {
+export type CarDialogProps = {
   car: Car;
   handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export interface CarEditProps {
+export type CarEditProps = {
   car: Car;
   fetchCars: () => void;
 }

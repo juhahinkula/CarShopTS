@@ -1,6 +1,6 @@
-import { Car } from "./types";
+import { Car, ResponseData } from "./types";
 
-export const fetchCars = () => {
+export const fetchCars = (): Promise<ResponseData> => {
   return fetch(import.meta.env.VITE_API_URL + '/cars')
   .then(response => {
     if (!response.ok)
@@ -11,7 +11,7 @@ export const fetchCars = () => {
   .catch(err => console.error(err))
 }
 
-export const saveCar = (car: Car) => {
+export const saveCar = (car: Car): Promise<Car> => {
   return fetch(import.meta.env.VITE_API_URL + '/cars', {
     method: 'POST',
     headers: { 'Content-type':'application/json' },
@@ -26,7 +26,7 @@ export const saveCar = (car: Car) => {
   .catch(err => console.error(err))
 }
 
-export const updateCar = (car: Car, url: string) => {
+export const updateCar = (car: Car, url: string): Promise<Car> => {
   return fetch(url, {
     method: 'PUT',
     headers: { 'Content-type':'application/json' },
@@ -41,13 +41,15 @@ export const updateCar = (car: Car, url: string) => {
   .catch(err => console.error(err))
 }
 
-export const deleteCar = (url: string) => {
+export const deleteCar = (url: string): Promise<Car> => {
   return fetch(url, {
     method: 'DELETE'
   })
   .then(response => {
     if (!response.ok)
       throw new Error("Error in delete: " + response.statusText);
+  
+    return response.json();
   })
   .catch(err => console.error(err))
 }
