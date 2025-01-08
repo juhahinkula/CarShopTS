@@ -5,10 +5,10 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
 import { updateCar } from './carapi';
 import CarDialogContent from './CarDialogContent';
-import { CarEditProps } from './types';
+import { Car, CarEditProps } from './types';
 
 export default function EditCar(props: CarEditProps) {
-  const [car, setCar] = useState({
+  const [car, setCar] = useState<Car>({
     brand: '',
     model: '',
     color: '',

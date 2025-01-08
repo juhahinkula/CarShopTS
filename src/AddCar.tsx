@@ -5,13 +5,14 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
 import { saveCar } from './carapi';
 import CarDialogContent from './CarDialogContent';
+import { Car } from './types';
 
 interface AddCarProps {
   fetchCars: () => void;
 }
 
 export default function AddCar({ fetchCars }: AddCarProps) {
-  const [car, setCar] = useState({
+  const [car, setCar] = useState<Car>({
     brand: '',
     model: '',
     color: '',
