@@ -1,6 +1,6 @@
 export type ResponseData = {
   _embedded: {
-    cars: Car[];
+    cars: CarResponse[];
   }
   _links: {
     self: {
@@ -15,14 +15,14 @@ export type ResponseData = {
   }
 }
 
-export type Car = {
+export type CarResponse = {
   brand: string;
   model: string;
   color: string;
   fuel: string;
   modelYear: number;
   price: number;
-  _links?: {
+  _links: {
     self: {
       href: string;
     };
@@ -31,6 +31,9 @@ export type Car = {
     };
   };
 }
+
+// Type for forms where _links is not needed
+export type Car = Omit<CarResponse, "_links">;
 
 export type CarDialogProps = {
   car: Car;

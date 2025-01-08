@@ -1,4 +1,4 @@
-import { Car, ResponseData } from "./types";
+import { Car, CarResponse, ResponseData } from "./types";
 
 export const fetchCars = (): Promise<ResponseData> => {
   return fetch(import.meta.env.VITE_API_URL + '/cars')
@@ -11,7 +11,7 @@ export const fetchCars = (): Promise<ResponseData> => {
   .catch(err => console.error(err))
 }
 
-export const saveCar = (car: Car): Promise<Car> => {
+export const saveCar = (car: Car): Promise<CarResponse> => {
   return fetch(import.meta.env.VITE_API_URL + '/cars', {
     method: 'POST',
     headers: { 'Content-type':'application/json' },
@@ -26,7 +26,7 @@ export const saveCar = (car: Car): Promise<Car> => {
   .catch(err => console.error(err))
 }
 
-export const updateCar = (car: Car, url: string): Promise<Car> => {
+export const updateCar = (car: Car, url: string): Promise<CarResponse> => {
   return fetch(url, {
     method: 'PUT',
     headers: { 'Content-type':'application/json' },
@@ -41,7 +41,7 @@ export const updateCar = (car: Car, url: string): Promise<Car> => {
   .catch(err => console.error(err))
 }
 
-export const deleteCar = (url: string): Promise<Car> => {
+export const deleteCar = (url: string): Promise<CarResponse> => {
   return fetch(url, {
     method: 'DELETE'
   })
