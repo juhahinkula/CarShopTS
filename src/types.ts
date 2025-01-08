@@ -32,7 +32,7 @@ export type CarResponse = {
   };
 }
 
-// Type for forms where _links is not needed
+// Type for forms where _links is not required
 export type Car = Omit<CarResponse, "_links">;
 
 export type CarDialogProps = {
