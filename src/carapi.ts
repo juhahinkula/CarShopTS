@@ -4,11 +4,11 @@ export const fetchCars = (): Promise<ResponseData> => {
   return fetch(import.meta.env.VITE_API_URL + '/cars')
   .then(response => {
     if (!response.ok)
-      throw new Error("Something went wrong: " + response.statusText);
+      throw new Error(`Failed to fetch cars: ${response.statusText}`);
   
     return response.json();  
   })
-  .catch(err => console.error(err))
+  .catch(error => console.error(error))
 }
 
 export const saveCar = (car: Car): Promise<CarResponse> => {
@@ -19,11 +19,11 @@ export const saveCar = (car: Car): Promise<CarResponse> => {
   })
   .then(response => {
     if (!response.ok)
-      throw new Error("Addition failed: " + response.statusText);
+      throw new Error("Failed to add car: " + response.statusText);
 
     return response.json();
   })
-  .catch(err => console.error(err))
+  .catch(error => console.error(error))
 }
 
 export const updateCar = (car: Car, url: string): Promise<CarResponse> => {
@@ -34,11 +34,11 @@ export const updateCar = (car: Car, url: string): Promise<CarResponse> => {
   })
   .then(response => {
     if (!response.ok)
-      throw new Error("Error in edit: " + response.statusText);
+      throw new Error("Failed to edit car: " + response.statusText);
 
     return response.json();
   })
-  .catch(err => console.error(err))
+  .catch(error => console.error(error))
 }
 
 export const deleteCar = (url: string): Promise<CarResponse> => {
@@ -47,9 +47,9 @@ export const deleteCar = (url: string): Promise<CarResponse> => {
   })
   .then(response => {
     if (!response.ok)
-      throw new Error("Error in delete: " + response.statusText);
+      throw new Error("Failed to delete car: " + response.statusText);
   
     return response.json();
   })
-  .catch(err => console.error(err))
+  .catch(error => console.error(error))
 }
